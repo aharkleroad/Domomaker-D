@@ -4,6 +4,8 @@ const mid = require('./middleware');
 const router = (app) => {
     // runs middleware between when the request is made to the url and when their request is fulfilled
     // called in order from left to right
+    app.get('/getDomos', mid.requiresLogin, controllers.Domo.getDomos);
+    
     app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
     app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
 
